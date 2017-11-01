@@ -1543,7 +1543,7 @@ namespace CNTK
 
     FunctionPtr BinaryOp(PrimitiveOpType op, const Variable& leftOperand, const Variable& rightOperand, Dictionary&& opConfig, const std::wstring& name)
     {
-        std::vector<Variable> operands = AutoBroadcastSequence(op, leftOperand, rightOperand);
+        std::vector<Variable> operands = {leftOperand, rightOperand};
         return AsComposite(MakeSharedObject<PrimitiveFunction>(op, operands, std::move(opConfig), name), name);
     }
 
